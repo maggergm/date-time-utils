@@ -1,0 +1,35 @@
+# datetime_utils
+
+from datetime import datetime, timedelta
+
+class DateTimeUtils:
+    @staticmethod
+    def format_date(date, format="%Y-%m-%d"):
+        return date.strftime(format)
+    
+    @staticmethod
+    def parse_date(date_str, format="%Y-%m-%d"):
+        return datetime.strptime(date_str, format)
+    
+    @staticmethod
+    def add_days(date, days):
+        return date + timedelta(days=days)
+    
+    @staticmethod
+    def date_difference(date1, date2):
+        return abs((date2 - date1).days)
+
+# Example usage
+if __name__ == "__main__":
+    today = datetime.today()
+    print("Today's date:", DateTimeUtils.format_date(today))
+    
+    date_str = "2023-05-29"
+    parsed_date = DateTimeUtils.parse_date(date_str)
+    print("Parsed date:", parsed_date)
+    
+    future_date = DateTimeUtils.add_days(today, 10)
+    print("Date after 10 days:", future_date)
+    
+    difference = DateTimeUtils.date_difference(today, parsed_date)
+    print("Difference in days:", difference)
